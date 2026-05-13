@@ -1,12 +1,4 @@
-import dotenv from "dotenv";
-import { fileURLToPath } from "url";
-import path from "path";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-dotenv.config({ path: path.resolve(__dirname, "./.env") });
-
+import "dotenv/config";
 import { defineConfig } from "prisma/config";
 
 export default defineConfig({
@@ -18,5 +10,3 @@ export default defineConfig({
     url: process.env.DATABASE_URL,
   },
 });
-
-
