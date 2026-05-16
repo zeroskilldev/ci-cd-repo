@@ -1,0 +1,22 @@
+name: Deploy to dev 
+
+on:
+    push:
+        branches:
+            -"main"
+
+jobs:
+    redeploy:
+        name: deploying the change to dev server
+        runs-on: ubuntu-latest
+        steps:
+            - name: Execute remote SSH commands using SSH key
+              uses: appleboy/ssh-action@v1
+              with:
+                host: 15.134.212.87
+                username: ubuntu
+                key: ${{ secrets.SSH_SECRET_KEY }}
+                port: 22
+                script: script.sh
+            
+
