@@ -13,6 +13,14 @@ jobs:
             - name: Checkout the code
               uses: actions/checkout@v2
 
+            - name: chech secret key
+              run: |
+                if [ -z "${{ secrets.SSH_SECRET_KEY }}" ]; then
+                    echo "SECRET EMPTY"
+                    exit 1
+                else
+                    echo "SECRET FOUND"
+                fi
 
             - name: Execute remote SSH commands using SSH key
               uses: appleboy/ssh-action@v1.2.5
